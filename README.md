@@ -1,65 +1,65 @@
-<img width="179" alt="screen shot 2018-04-11 at 14 55 21" src="https://user-images.githubusercontent.com/4838076/38634265-6545f090-3d98-11e8-8869-c5e477648fdf.png">
+This is Will Goad's attempt at the Significa Front End Challenge as described at https://github.com/Significa/frontend-challenge
 
-[Significa](https://significa.pt/) is an Oporto based digital studio founded in late 2013. Despite being specialised in Interaction Design and Brand Development, we believe that good design thinking can answer almost any question and solve most problems. We aim to provide meaningful design solutions to achieve the best user engagement possible in any situation.
+Contact Details:
+willgoad@btinternet.com
 
-## About the challenge
+Here I document my planning and execution of the challenge.
 
-This is a pretty simple test, in which you should be able to write a React app, using the provided screens as reference. You’ll need to make requests to an API to get some JSON content, filter the data and print it on view.
+Analysis Section
 
-You can use any boilerplate/approach you prefer, but try to keep it simple. We encourage you to use your favourite tools and packages to build a solid React application.
+Succes Criteria:
+1. Contains 2 Pages:
+- Home:
+    -Empty (Initial) State, Includes a search bar, logo and splash image.
+    -Loading (Typing) State (Load potential Search Results while typing), Makes API call, Shows CSS Loading Wheel, Returns results after every letter
+    -Movie not Found, Shows a message saying movie not found and the last results that returned successfully
 
-### The app should be a movie search with two pages:
+-Movie Details:
+    -Loading State, Makes Request to API for more details on selected film, shows CSS Loading Wheel until data returned
+    -Movie Not Found, Sends user back to search page with error message.
 
-* **Home page:** search field and a list with the results;
+2. Succesfully Communicate with OMDB API
+3. Write a good README with basic information (e.g.: how to start the project and how to build it);
+4. Make Responsive
+5. Persistent Liking changeable and shown in both search results and movie details page
+6. Use BEM & ITCSS in CSS
+7. Include Loading States so the user is being communicated to at all times.
+8. 100% Test Code Coverage through Automated Unit Tests and manual tests where automated testing is not possible.
+9. Code has good: semantics, structure, legibility, size and elegance
 
-  _Think about empty state, loading state and movie not found_
+Changes to Success Criteria after Initial manual API Tests
 
-* **Movie page:** movie details page;
+I have tested the API so to make sure it works in the ways needed to fulfill my success criteria and it fails at only one point: the API does not allow
+searches of 2 characters or less and so I can't start search until the third letter. Additionally, my API key only grants me 1000 calls a day so searching 
+would risk hitting that limit too quickly. Therefore I have decided to refresh the results after every new word is typed.
 
-  _Think about loading state and movie not found_
+Design
 
-The purpose of this challenge is to evaluate your HTML, CSS, Javascript and React API skills and overall approach while composing a simple web app given a set of screens and an API feed. We will also assess the HTML, CSS, and JS output.
+1. Component Tree / Component Structure
 
-## Getting Started
+We'll have an app component which contains a layout component which contains a Logo componet and the {Props.Children} 
+into which we will dynamically pass individual pages. The two pages are Movie Search and Movie Details.
 
-1.  Fork this repository to your personal account;
-2.  Create a branch with your name;
-3.  Solve the challenge in the best way you can;
+Movie Search
 
-**Send us your code in one of two ways.**
+Within Movie Search there will be 3 sub components: Search Bar, Splash Image and Results Display. Finally, the results 
+display will contain individual film components which will essentially be a css styled html div containing the poster, 
+year made and title. The film component will also contain a Like component.
 
-1.  Send us a PR;
-2.  Send us an email with your code in a zip to: hello@significa.pt
 
-### Tips
+2. Application State (Data)
+3. Components Vs Containers
 
-* Write a good README with basic information (e.g.: how to start the project and how to build it);
-* There's no screens designed for the mobile version, but if you build a responsive app it's a big plus. We would love to see your design skills as well!
-* Feel free to work and improve on the available designs. Think of them as guidelines.
-* There's a "like" button on the details page. It would be great if this information is persistent!
-* Prefer to use a css methodology, such as BEM, ITCSS, etc;
-* Asking questions is good. We will not penalize you for asking questions;
-* The API server is sometimes slow, so think about loading and empty states throughout your application;
-* We're looking for signs you understand concepts such as events, promises, and reactivity, and how those concepts are implemented in Javascript;
-* Unit testing will be greatly valued;
-* The git history will be evaluated;
-* Your code will be evaluated by: semantics, structure, legibility, size, elegance (among other factors);
+Extra:
 
-### Necessary information
+1. What is the BEM methodology in CSS?
 
-#### API:
+2. What is the ITCSS metholody in CSS?
 
-We suggest using [OMDb API](http://www.omdbapi.com/), although you can use any other API you prefer
+3. What are Events in JavaScript?
 
-#### Screens / Assets / Styleguide:
+4. What are Promises in JavaScript?
 
-Take a look at the `/layout` folder, there you will find everything you need.
+5. What is Reactivity in JavaScript?
 
-[Invision Prototype](https://invis.io/K6GW19Z3FP8#/291216728_1-Search)  
-[Styleguide](https://invis.io/5JGW1AFQHUX#/291309274_1-type)
 
-### Contact or doubts
-
-Use the [issues](https://github.com/Significa/frontend-challenge/issues) or send us an email: hello@significa.pt
-
-_Break a leg!_
