@@ -9,12 +9,12 @@ Analysis Section
 
 Succes Criteria:
 1. Contains 2 Pages:
-- Home:
+Home:
     -Empty (Initial) State, Includes a search bar, logo and splash image.
     -Loading (Typing) State (Load potential Search Results while typing), Makes API call, Shows CSS Loading Wheel, Returns results after every letter
     -Movie not Found, Shows a message saying movie not found and the last results that returned successfully
 
--Movie Details:
+Movie Details:
     -Loading State, Makes Request to API for more details on selected film, shows CSS Loading Wheel until data returned
     -Movie Not Found, Sends user back to search page with error message.
 
@@ -48,7 +48,16 @@ year made and title. The film component will also contain a Like component.
 
 
 2. Application State (Data)
-3. Components Vs Containers
+The state will be managed by the stateful Movie Search Component. The state will contain:
+
+<ul>
+    <li>searchTerm: ie "What"</li>
+    <li>shouldSearch: ie false</li>
+    <li>results: Includes Title, Year, Poster and isLiked</li>
+</ul>
+
+Whether a film is liked will be stored persistently on firebase and before being display my app will check whether it
+is liked or not and update it accordingly.
 
 Extra:
 
