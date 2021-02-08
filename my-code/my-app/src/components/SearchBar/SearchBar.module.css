@@ -1,0 +1,14 @@
+.SearchBar {
+    width: 100% -24px;
+    height: 20px;
+    border-radius: 4px;
+    background: white;
+    margin-bottom: 31px;
+    padding: 12px;
+}
+
+.SearchIcon {
+    margin-right: 12px;
+    font-size: 100px;
+    color: black;
+}

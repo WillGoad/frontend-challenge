@@ -59,6 +59,14 @@ The state will be managed by the stateful Movie Search Component. The state will
 Whether a film is liked will be stored persistently on firebase and before being display my app will check whether it
 is liked or not and update it accordingly.
 
+Sprint 1 (Monday)
+
+Develop the movie search screen so that it console.logs an IMDB id when the movie is clicked.
+
+Sprint 2 (Tuesday)
+
+Develop the Movie Details page so it takes an IMBD ID and returns details in a meaningful way.
+
 Extra:
 
 1. What is the BEM methodology in CSS?

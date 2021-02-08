@@ -1,0 +1,20 @@
+.Film {
+    height: 240px;
+    width: 180px;
+    background: pink;
+    border-radius: 4px;
+    margin: 0px;
+    position: sticky;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.Film p {
+    position: absolute;
+    display: none;
+}
+
+.Film img {
+    width: 100%;
+}
