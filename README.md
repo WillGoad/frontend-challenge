@@ -67,6 +67,11 @@ Sprint 2 (Tuesday)
 
 Develop the Movie Details page so it takes an IMBD ID and returns details in a meaningful way.
 
+Testing 
+
+1. Removing Posterless films - I tried several different search terms and found some returned films without posters which 
+looks very ugly. To address this I added a conditional in my Film.js component which stops them from appearing.
+
 Extra:
 
 1. What is the BEM methodology in CSS?

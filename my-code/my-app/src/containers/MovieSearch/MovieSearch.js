@@ -14,26 +14,8 @@ class MovieSearch extends Component {
 
     componentDidMount() {
         let films;
-        axios.get('http://www.omdbapi.com/?s=what&apikey=5d808408')
+        axios.get('http://www.omdbapi.com/?s=facebook&apikey=5d808408')
         .then(response => {
-            // this.setState({results: response.data});
-            // console.log(this.state.results)
-            // var i;
-            // let tempArray =[]
-            // for (i = 0; i < response.data.Search.length; i++) {
-                
-            //     let film = {title:response.data.Search[i].Title,
-            //         year:response.data.Search[i].Year,
-            //         poster:response.data.Search[i].Poster,
-            //         key:response.data.Search[i].imbdID
-            //     };
-                
-            //     tempArray.push(film);
-     
-            // } 
-            // console.log(tempArray)
-            // this.setState({results: tempArray})
-            // console.log(this.state.results)
             films = response.data.Search.map(film => {
                 return {
                     title:film.Title, 
@@ -44,7 +26,6 @@ class MovieSearch extends Component {
                 }
                         
             });
-            console.log(films)
             this.setState({results: films});
             
         });
@@ -53,8 +34,6 @@ class MovieSearch extends Component {
 
 
     render () {
-        console.log(this.state.results);
-
         return (
             <Aux>
                 <SearchBar />
