@@ -1,20 +1,46 @@
 .Film {
     height: 240px;
     width: 180px;
-    background: pink;
     border-radius: 4px;
-    margin: 0px;
     position: sticky;
     overflow: hidden;
     display: flex;
-    justify-content: center;
 }
 
-.Film p {
-    position: absolute;
-    display: none;
-}
+
 
 .Film img {
     width: 100%;
 }
+
+.Film img:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.ContentContainer {
+    padding: 12px;
+    position: absolute;
+    height: 216px;
+    width: 156px;
+    margin: auto;
+    border-radius: 4px;
+}
+
+.ContentContainer:hover {
+    background: #1B2329;
+    opacity: 0.9;
+}
+
+.ContentContainer p {
+    display: none;
+}
+
+
+.ContentContainer:hover p {
+    display: block;
+}
+
+.Year {
+    font-size: 16px;
+}
+

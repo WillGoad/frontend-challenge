@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import Aux from '../../hoc/Aux_';
 import Results from '../../components/Results/Results';
@@ -8,23 +9,52 @@ class MovieSearch extends Component {
     state = {
         searchTerm: "",
         shouldSearch: false,
-        results: [
-            {title: "What We Do in the Shadows", year: "2018", poster:"https://m.media-amazon.com/images/M/MV5BMjAwNDA5NzEwM15BMl5BanBnXkFtZTgwMTA1MDUyNDE@._V1_SX300.jpg", isLiked: false},
-            {title: "What We Do in the Shadows", year: "2018", poster:"https://m.media-amazon.com/images/M/MV5BMjAwNDA5NzEwM15BMl5BanBnXkFtZTgwMTA1MDUyNDE@._V1_SX300.jpg", isLiked: false},
-            {title: "What We Do in the Shadows", year: "2018", poster:"https://m.media-amazon.com/images/M/MV5BMjAwNDA5NzEwM15BMl5BanBnXkFtZTgwMTA1MDUyNDE@._V1_SX300.jpg", isLiked: false},
-            {title: "What We Do in the Shadows", year: "2018", poster:"https://m.media-amazon.com/images/M/MV5BMjAwNDA5NzEwM15BMl5BanBnXkFtZTgwMTA1MDUyNDE@._V1_SX300.jpg", isLiked: false},
-            {title: "What We Do in the Shadows", year: "2018", poster:"https://m.media-amazon.com/images/M/MV5BMjAwNDA5NzEwM15BMl5BanBnXkFtZTgwMTA1MDUyNDE@._V1_SX300.jpg", isLiked: false},
-            {title: "What We Do in the Shadows", year: "2018", poster:"https://m.media-amazon.com/images/M/MV5BMjAwNDA5NzEwM15BMl5BanBnXkFtZTgwMTA1MDUyNDE@._V1_SX300.jpg", isLiked: false},
-            {title: "What We Do in the Shadows", year: "2018", poster:"https://m.media-amazon.com/images/M/MV5BMjAwNDA5NzEwM15BMl5BanBnXkFtZTgwMTA1MDUyNDE@._V1_SX300.jpg", isLiked: false},
-            {title: "What We Do in the Shadows", year: "2018", poster:"https://m.media-amazon.com/images/M/MV5BMjAwNDA5NzEwM15BMl5BanBnXkFtZTgwMTA1MDUyNDE@._V1_SX300.jpg", isLiked: false},
-            {title: "What We Do in the Shadows", year: "2018", poster:"https://m.media-amazon.com/images/M/MV5BMjAwNDA5NzEwM15BMl5BanBnXkFtZTgwMTA1MDUyNDE@._V1_SX300.jpg", isLiked: false},
-            {title: "What We Do in the Shadows", year: "2018", poster:"https://m.media-amazon.com/images/M/MV5BMjAwNDA5NzEwM15BMl5BanBnXkFtZTgwMTA1MDUyNDE@._V1_SX300.jpg", isLiked: false},
-            {title: "What We Do in the Shadows", year: "2018", poster:"https://m.media-amazon.com/images/M/MV5BODYzNjI0ODUzNF5BMl5BanBnXkFtZTcwNTI1MjQ2Nw@@._V1_SX300.jpg", isLiked: false},
-            {title: "What We Do in the Shadows", year: "2018", poster:"https://m.media-amazon.com/images/M/MV5BMjAwNDA5NzEwM15BMl5BanBnXkFtZTgwMTA1MDUyNDE@._V1_SX300.jpg", isLiked: false}
-        ]
+        results: []
     }
 
+    componentDidMount() {
+        let films;
+        axios.get('http://www.omdbapi.com/?s=what&apikey=5d808408')
+        .then(response => {
+            // this.setState({results: response.data});
+            // console.log(this.state.results)
+            // var i;
+            // let tempArray =[]
+            // for (i = 0; i < response.data.Search.length; i++) {
+                
+            //     let film = {title:response.data.Search[i].Title,
+            //         year:response.data.Search[i].Year,
+            //         poster:response.data.Search[i].Poster,
+            //         key:response.data.Search[i].imbdID
+            //     };
+                
+            //     tempArray.push(film);
+     
+            // } 
+            // console.log(tempArray)
+            // this.setState({results: tempArray})
+            // console.log(this.state.results)
+            films = response.data.Search.map(film => {
+                return {
+                    title:film.Title, 
+                    year:film.Year, 
+                    poster:film.Poster, 
+                    isLiked: false,
+                    key:film.imbdID
+                }
+                        
+            });
+            console.log(films)
+            this.setState({results: films});
+            
+        });
+    }
+
+
+
     render () {
+        console.log(this.state.results);
+
         return (
             <Aux>
                 <SearchBar />

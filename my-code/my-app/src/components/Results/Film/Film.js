@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import classes from './Film.module.css';
-
+console.log("Film Reached");
 class Film extends Component {
+    
     render () {
         let film = null;
 
@@ -13,8 +14,10 @@ class Film extends Component {
                 break;
             case ( false ): 
                 film =  <div className={classes.Film}>
-                            <p>{this.props.title}</p>
-                            <p>{this.props.year}</p>
+                            <div className={classes.ContentContainer}>
+                                <p>{this.props.title}</p>
+                                <p className={classes.Year}>{this.props.year}</p>
+                            </div>
                             <img src={this.props.poster} alt="Poster" />
                         </div>;
                 break;
@@ -28,7 +31,7 @@ class Film extends Component {
 }
 
 Film.propTypes = {
-    type: PropTypes.string.isRequired
+    isLiked: PropTypes.bool.isRequired
 };
 
 export default Film;
