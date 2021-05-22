@@ -14,11 +14,11 @@ class Film extends Component {
                     break;
                 case ( false ): 
                     film =  <div className={classes.Film}>
-                                <div className={classes.ContentContainer}>
+                                <div className={classes.ContentContainer} >
                                     <p>{this.props.title}</p>
                                     <p className={classes.Year}>{this.props.year}</p>
                                 </div>
-                                <img src={this.props.poster} alt="Poster" />
+                                <img src={this.props.poster} alt="Poster"/>
                             </div>;
                     break;
                 default:

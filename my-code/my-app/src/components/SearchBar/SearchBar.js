@@ -5,10 +5,10 @@ import Input from '../../components/UI/Input/Input';
 
 // import Logo from '../../assets/icon-magnifier-grey.png';
 
-const searchBar = () => {
+const searchBar = ( props ) => {
     return (
         <div className={classes.SearchBar}>
-            <Input inputtype="input" type="text" name="Search-Bar" placeholder="Search movies..."/>
+            <Input inputtype="input" type="text" name="Search-Bar" placeholder="Search movies..." onChange={props.changed} />
         </div>
     );
 };

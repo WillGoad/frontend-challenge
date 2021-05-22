@@ -12,31 +12,60 @@ class MovieSearch extends Component {
         results: []
     }
 
-    componentDidMount() {
-        let films;
-        axios.get('http://www.omdbapi.com/?s=facebook&apikey=5d808408')
-        .then(response => {
-            films = response.data.Search.map(film => {
-                return {
-                    title:film.Title, 
-                    year:film.Year, 
-                    poster:film.Poster, 
-                    isLiked: false,
-                    key:film.imbdID
+    queryUpdatedHandler = (event) => {
+        console.log(event.target.value);
+        this.setState( {
+            searchTerm: event.target.value
+        })
+        console.log(this.state.searchTerm);
+        if (this.state.searchTerm.length >= 3) {
+            console.log("SearchTerm Reached")
+            let films;
+            axios.get('http://www.omdbapi.com/?s=' + this.state.searchTerm + '&apikey=5d808408')
+            .then(response => {
+                if ( response.data.Search !== "undefined") {
+                    films = response.data.Search.map(film => {
+                        return {
+                            title:film.Title, 
+                            year:film.Year, 
+                            poster:film.Poster, 
+                            isLiked: false,
+                            key:film.imbdID
+                        }
+                                
+                    });
+                    this.setState({results: films});
                 }
-                        
             });
-            this.setState({results: films});
-            
-        });
+        }
     }
+
+    // componentDidMount() {
+        
+    //     let films;
+    //     axios.get('http://www.omdbapi.com/?s=happy&apikey=5d808408')
+    //     .then(response => {
+    //         films = response.data.Search.map(film => {
+    //             return {
+    //                 title:film.Title, 
+    //                 year:film.Year, 
+    //                 poster:film.Poster, 
+    //                 isLiked: false,
+    //                 key:film.imbdID
+    //             }
+                        
+    //         });
+    //         this.setState({results: films});
+            
+    //     });
+    // }
 
 
 
     render () {
         return (
             <Aux>
-                <SearchBar />
+                <SearchBar changed={this.queryUpdatedHandler}/>
                 <Results results={this.state.results}/>
             </Aux>
         );
