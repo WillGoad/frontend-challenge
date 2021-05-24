@@ -23,7 +23,7 @@ class MovieSearch extends Component {
             let films;
             axios.get('http://www.omdbapi.com/?s=' + this.state.searchTerm + '&apikey=5d808408')
             .then(response => {
-                if ( response.data.Search !== "undefined") {
+                if ( response.data.Search !== undefined) {
                     films = response.data.Search.map(film => {
                         return {
                             title:film.Title, 

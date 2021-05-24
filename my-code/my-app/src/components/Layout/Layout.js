@@ -2,7 +2,7 @@ import React from 'react';
 
 import Aux from '../../hoc/Aux_';
 import classes from './Layout.module.css';
-import Logo from '../../assets/logo.png';
+import Logo from '../../assets/logo.svg';
 
 const layout = ( props ) => (
     <Aux>
